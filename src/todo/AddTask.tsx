@@ -1,14 +1,28 @@
-function AddTask() {
+import { useState } from "react";
+import type { HandleAddTodo } from "./TodoList";
+
+function AddTask({ onAddTodo }: { onAddTodo: HandleAddTodo }) {
+
+    const [text, setText] = useState("");
+
+    const handleAddTodo = () => {
+        onAddTodo(text);
+        setText('');
+    }
+
     return (
         <div className="flex w-full mb-5">
             <input
                 type="email"
                 id="Email"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 placeholder="write task"
                 className="mt-0.5 px-3 lg:text-lg h-auto w-full rounded border border-indigo-600 shadow-sm sm:text-sm"
             />
 
             <button
+                onClick={handleAddTodo}
                 className="inline-flex cursor-pointer ml-3 items-center gap-2 rounded-sm border border-indigo-600 px-8 py-3 text-indigo-600 hover:bg-indigo-600 hover:text-white focus:ring-3 focus:outline-hidden"
 
             >
