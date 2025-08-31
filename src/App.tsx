@@ -1,8 +1,10 @@
-import TodoList from "./todo/TodoList";
+import TodoList from "./components/modules/todo/TodoList";
 
 function App() {
+
     return (
         <TodoList />
+
     );
 }
 
